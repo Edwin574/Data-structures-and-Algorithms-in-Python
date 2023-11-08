@@ -47,7 +47,21 @@ class SinglyList:
             else:
                 current.getNext()
         return found
-
+    def delete(self,item):
+        current=self.head
+        found=False
+        previous=None
+        while not found:
+            if current.getData()==item:
+                found=True
+            else:
+                previous=current
+                current=current.getNext()
+        if previous==None:
+            self.head=current.getNext()
+        else:
+            previous.setNext(current.getNext())
+        pass
 
 
 
