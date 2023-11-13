@@ -1,13 +1,12 @@
-#This implementation considers the List unordered
-#Defining the structure of a node in the Linked list.
-class Node:
+
+class Node():
     def __init__(self,data):
         self.data=data
         self.next=None
 
     def getData(self):
         return self.data
-
+    
     def setData(self,new_data):
         self.data=new_data
 
@@ -17,18 +16,9 @@ class Node:
     def setNext(self,new_next):
         self.next=new_next
 
-#defining the linked list itself
-class SinglyList:
+class OrderedLinkedList():
     def __init__(self):
         self.head=None
-
-    def isEmpty(self):
-        return self.head==None
-    
-    def addItem(self,item):
-        newNode=Node(item)
-        newNode.setNext(self.head)
-        self.head=newNode
 
     def size(self):
         current=self.head
@@ -36,18 +26,44 @@ class SinglyList:
         while current!=None:
             count+=1
             current=current.getNext()
-        return count
-    
-    def search(self,item):
+            
+    def is_empty(self):
+        return self.head==None
+
+    def addItem(self,item):
+        current=self.head
+        previous=None
+        stop=False
+        while current!=None and not stop:
+            if current.getData()>item:
+                stop=True
+            else:
+                previous==current
+                current==current.getNext()
+        new=Node(item)
+        if previous==None:
+            new.setNext(self.head)
+            self.head=new
+        else:
+            new.setNext(current)
+            previous.setNext(new)
+
+    def searchItem(self,item):
         current=self.head
         found=False
-        while current!=None and not found:
+        stop=False
+
+        while current!=None and not found and not stop:
             if current.getData()==item:
                 found=True
             else:
-                current.getNext()
+                if current.getData()>item:
+                    stop=True
+                else:
+                    current=current.getNext()
         return found
-    def delete(self,item):
+
+    def deleteItem(self,item):
         current=self.head
         found=False
         previous=None
@@ -61,7 +77,3 @@ class SinglyList:
             self.head=current.getNext()
         else:
             previous.setNext(current.getNext())
-        pass
-
-
-
