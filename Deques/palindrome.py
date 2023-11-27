@@ -1,6 +1,9 @@
 from Deques import Deque
 
 def palindrome_checker(a_sting):
+    '''
+    This function takes a string and checks whether it is a palindrome by using a Deque data structure
+    '''
     char_deque=Deque()
     for character in a_sting:
         char_deque.add_front(character)
