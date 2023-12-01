@@ -5,7 +5,7 @@ class BinaryHeap():
         self.current_size=0
         
     def swap_up(self,i):
-        while i//2>0:
+        while i//2>0:#as long as the given index if not the root/first element
             if not self.heap_list[i//2] <self.heap_list[i]:
                 temp=self.heap_list[i//2]
                 self.heap_list[i//2]=self.heap_list[i]
@@ -50,7 +50,7 @@ class BinaryHeap():
     def is_empty(self):
         return self.current_size==1
     
-    def build_heap(self,a_list):
+    def build_heap(self,a_list):#**
         i=len(a_list)//2
         self.current_size=len(a_list)
         self.heap_list=[0]+a_list[:]
