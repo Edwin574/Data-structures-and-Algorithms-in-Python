@@ -4,13 +4,15 @@ class BinaryHeap():
         self.heap_list=[0]
         self.current_size=0
         
-    def swap_up(self,i):
+        
+    def swap_up(self,i):# swapping up for a Min Heap
         while i//2>0:#as long as the given index if not the root/first element
             if not self.heap_list[i//2] <self.heap_list[i]:
                 temp=self.heap_list[i//2]
                 self.heap_list[i//2]=self.heap_list[i]
                 self.heap_list[i]=temp
             i=i//2
+        
         
     def insert(self,k):
         self.heap_list.append(k)
