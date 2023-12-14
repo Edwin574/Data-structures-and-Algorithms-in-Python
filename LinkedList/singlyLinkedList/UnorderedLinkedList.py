@@ -1,24 +1,7 @@
 #This implementation considers the List unordered
-#Defining the structure of a node in the Linked list.
-class Node:
-    def __init__(self,data):
-        self.data=data
-        self.next=None
-
-    def getData(self):
-        return self.data
-
-    def setData(self,new_data):
-        self.data=new_data
-
-    def getNext(self):
-        return self.next
-    
-    def setNext(self,new_next):
-        self.next=new_next
-
+from node import Node
 #defining the linked list itself
-class SinglyList:
+class UnorderedLinkedList:
     def __init__(self):
         self.head=None      #We initialise an empty linked list with the head element.
 
@@ -45,10 +28,13 @@ class SinglyList:
             if current.getData()==item:
                 found=True
             else:
-                current.getNext()
+                current=current.getNext()
         return found
     
     def delete(self,item):
+        '''
+        Deleted a particular item from the linked list
+        '''
         current=self.head
         found=False
         previous=None
@@ -62,7 +48,18 @@ class SinglyList:
             self.head=current.getNext()
         else:
             previous.setNext(current.getNext())
-        pass
-
+        
+    def __str__(self) -> str:
+        current=self.head
+        result=[]
+        if current==None:
+            return "Empty"
+        while current!=None:
+            for node in range(self.size()):
+                result.append(str(current.data))
+                current=current.getNext()
+            return ' --> '.join(result)
+            
+    
 
 
