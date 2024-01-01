@@ -14,12 +14,21 @@ class DoublyLinkedList():
     def size(self):
         return self.size
     
-    def addItem(self,data):
-        #when we start
-        new_node=Node(data=data)
-        return new_node
+    def insert_between(self,data):
+        new_node=Node(data)
+        pred=self.head
+        succ=pred.getNext()
         
-    
+        new_node.prev=pred
+        new_node.next=succ
+        
+        succ.prev=new_node
+        pred.next=new_node
+        
+        
+        self.size+=1
+        
+      
     def searchItem(self):
         pass
     
@@ -27,11 +36,11 @@ class DoublyLinkedList():
         pass
     
     def __str__(self) -> str:
-        current=self.head
-        if current.next==self.trailer:
+        current=self.head.next
+        if current==self.trailer:
             return "Empty"
-        while current.next!=self.trailer:
-            for node in range(self.size):
+        while current!=self.trailer:
+            for _ in range(self.size):
                 print(current.data)
                 current=current.getNext()
     
