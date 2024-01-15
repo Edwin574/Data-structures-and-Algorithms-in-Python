@@ -10,7 +10,7 @@ heap.insert(4)
 
 
 print(heap)
-print(heap.size())
+# print(heap.size())
 
-heap.delete_min()
-print(heap)
+# heap.delete_min()
+# print(heap)

@@ -20,7 +20,7 @@ class BinaryHeap():
         self.swap_up(self.current_size)
     
     def min_child(self,i):
-        #we first check if the element at given index has a right child index that is within the list length
+        #we first check if the element at given index has a right child index that is within the list size
         if i*2+1>self.current_size:
             return i*2
         else:
